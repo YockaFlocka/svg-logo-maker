@@ -19,7 +19,7 @@ const questions = [
     {
         type: "input",
         name: "charcolor",
-        message: "What color do you want the text to be?"
+        message: "What color do you want the text to be? Pick a color or hexidecimal number"
     },
     {
         type: "list",
@@ -30,7 +30,7 @@ const questions = [
     {
         type: "input",
         name: "shapecolor",
-        message: "What color do you want the shape to be?",
+        message: "What color do you want the shape to be? Pick a color or hexidecimal number",
     }
 ];
 
@@ -39,14 +39,13 @@ function writeLogo(fileName, data) {
         if (err) {
             return console.log(err);
         };
-      console.log("Generated Logo!");  
+      console.log("Generated logo.svg");  
     });
 }
 
 function init() {
     inquirer.prompt(questions)
     .then(function (userInput) {
-        console.log(userInput)
         let shape;
 
         if (userInput.shape == 'Circle') {
