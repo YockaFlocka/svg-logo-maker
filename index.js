@@ -1,7 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+
+// grabbing the exported shapes from the classes
 const {Circle, Triangle, Square} = require('./lib/shapes');
 
+// array of questions for the user
 const questions = [
     {
         type: "input",
@@ -34,6 +37,7 @@ const questions = [
     }
 ];
 
+// function to write the logo.svg file
 function writeLogo(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
@@ -48,6 +52,7 @@ function init() {
     .then(function (userInput) {
         let shape;
 
+        // if statements to use the shape the user chose
         if (userInput.shape == 'Circle') {
             shape = new Circle(userInput.shapecolor);
         }
@@ -60,6 +65,7 @@ function init() {
             shape = new Triangle(userInput.shapecolor); 
         }
         
+        // variable that has the final info to generate the svg logo
         var imgCode = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
         ${shape.render()}
